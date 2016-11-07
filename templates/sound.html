@@ -1,0 +1,13 @@
+<html>
+<body>
+<audio autoplay=true src="../wav/{{ voice }}/{{ sentence }}" type="audio/wav">
+Your browser does not support the audio element.
+</audio> 
+<form action=../play method="post">
+<input type="text" name="sentence">
+<input type="radio" name="voice", value="awb">awb<br/>
+<input type="radio" name="voice", value="mycroft">mycroft<br/>
+<input type="submit">
+</form>
+</body>
+</html>
