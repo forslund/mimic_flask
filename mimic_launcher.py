@@ -17,13 +17,13 @@ voices = {
 
 @app.route('/wav/<voice>/<sentence>')
 def hello_world(voice, sentence):
-    print voice
-    print sentence
+    print(voice)
+    print(sentence)
     wavfile = '/tmp/' + str(uuid.uuid4()) + '.wav'
     subprocess.Popen(['/home/ake/projects/c/mimic/build-wall/mimic', '-voice',
                       voices[voice], '-t', sentence, wavfile])
     time.sleep(1)
-    with open(wavfile) as w:
+    with open(wavfile, 'rb') as w:
         data = w.read()
     
     return data
@@ -33,8 +33,8 @@ def play():
     if request.method == 'POST':
         sentence = request.form['sentence']
         voice = request.form['voice']
-        print sentence
-        print voice
+        print(sentence)
+        print(voice)
     else:
         sentence = ''
         voice = ''
