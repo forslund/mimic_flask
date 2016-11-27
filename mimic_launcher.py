@@ -5,6 +5,7 @@ from flask import render_template
 import subprocess
 import time
 import uuid
+import os
 
 app = Flask(__name__)
 
@@ -24,8 +25,10 @@ def hello_world(voice, sentence):
                       voices[voice], '-t', sentence, wavfile])
     time.sleep(1)
     with open(wavfile, 'rb') as w:
+        filename = w.name
         data = w.read()
     
+    os.remove(filename)
     return data
 
 @app.route('/play', methods=['POST', 'GET'])
